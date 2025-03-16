@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations3.c                                      :+:      :+:    :+:   */
+/*   operations3_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmaanane <rmaanane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 03:01:58 by rmaanane          #+#    #+#             */
-/*   Updated: 2025/03/09 03:21:57 by rmaanane         ###   ########.fr       */
+/*   Updated: 2025/03/15 23:25:32 by rmaanane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
 void	sa(t_list **stack_a)
 {
@@ -24,7 +24,6 @@ void	sa(t_list **stack_a)
 	first->next = second->next;
 	second->next = first;
 	*stack_a = second;
-	write(1, "sa\n", 3);
 }
 
 void	sb(t_list **stack_b)
@@ -39,12 +38,10 @@ void	sb(t_list **stack_b)
 	first->next = second->next;
 	second->next = first;
 	*stack_b = second;
-	write(1, "sb\n", 3);
 }
 
 void	ss(t_list **stack_a, t_list **stack_b)
 {
 	sa(stack_a);
 	sb(stack_b);
-	write(1, "ss\n", 3);
 }

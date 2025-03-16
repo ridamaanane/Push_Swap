@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmaanane <rmaanane@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/09 03:02:36 by rmaanane          #+#    #+#             */
+/*   Updated: 2025/03/09 03:22:41 by rmaanane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void push_to_stack_b(list_t **a, list_t **b, int min, int max)
+void	push_to_stack_b(t_list **a, t_list **b, int min, int max)
 {
-	int size_b;
+	int	size_b;
 
 	if (!*a)
 		return ;
@@ -26,12 +38,13 @@ void push_to_stack_b(list_t **a, list_t **b, int min, int max)
 			ra(a);
 	}
 }
-int big_index(list_t **b)
+
+int	big_index(t_list **b)
 {
-	int i;
-	int big_index;
-	int max;
-	list_t *temp;
+	int		i;
+	int		big_index;
+	int		max;
+	t_list	*temp;
 
 	i = 0;
 	temp = *b;
@@ -50,11 +63,11 @@ int big_index(list_t **b)
 	return (big_index);
 }
 
-void push_to_stack_a(list_t **a, list_t **b, int max)
+void	push_to_stack_a(t_list **a, t_list **b, int max)
 {
-	int operations;
+	int	operations;
 
-	operations = calc_operations(b , max);
+	operations = calc_operations(b, max);
 	while (operations > 0)
 	{
 		operations--;
@@ -67,22 +80,23 @@ void push_to_stack_a(list_t **a, list_t **b, int max)
 	}
 	pa(a, b);
 }
-void loop_in_stack_b(list_t **b, list_t **a)
+
+void	loop_in_stack_b(t_list **b, t_list **a)
 {
 	while (list_len(*b) > 0)
 		push_to_stack_a(a, b, big_index(b));
 }
-void sort_stack(list_t **stack_a, list_t **stack_b, int *arr, int size)
+
+void	sort_stack(t_list **stack_a, t_list **stack_b, int *arr, int size)
 {
-	int max;
-	int i;
-	int size_a;
+	int	max;
+	int	i;
+	int	size_a;
 
 	if (size > 100)
 		max = size / 13;
 	else
 		max = size / 6;
-	
 	i = 0;
 	size_a = list_len(*stack_a);
 	while (list_len(*stack_a) > 0)

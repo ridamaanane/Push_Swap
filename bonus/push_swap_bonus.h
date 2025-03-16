@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rmaanane <rmaanane@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/09 03:02:15 by rmaanane          #+#    #+#             */
-/*   Updated: 2025/03/16 00:48:03 by rmaanane         ###   ########.fr       */
+/*   Created: 2025/03/15 18:05:23 by rmaanane          #+#    #+#             */
+/*   Updated: 2025/03/16 16:08:45 by rmaanane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS
+# define PUSH_SWAP_BONUS
 
-# include <limits.h>
-# include <stdarg.h>
+# include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
+# include <stdarg.h>
+
 
 typedef struct list_s
 {
@@ -61,18 +63,32 @@ void				push_to_stack_b(t_list **a, t_list **b, int min, int max);
 int					big_index(t_list **b);
 void				push_to_stack_a(t_list **a, t_list **b, int max);
 void				loop_in_stack_b(t_list **b, t_list **a);
-
-// sorting_helpers
-int					calc_operations(t_list **b, int max);
-int					*make_arr(t_list *stack);
-void				sort_array(int *array, int size);
-int					stack_already_sorted(t_list *stack_a);
-void				sort_stack_by_size(t_list **a, t_list **b, int *arr);
-void	sort_stack(t_list **stack_a, t_list **stack_b, int *arr, int size);
+void				sort_stack(t_list **stack_a, t_list **stack_b, int *arr,
+						int size);
 
 // small_sort
 int					pos_of_min(t_list **a);
 void				sort_3(t_list **stack_a);
 void				small_sort(t_list **stack_a, t_list **stack_b);
+
+//checker
+int read_from_stack(t_list **stack_a, t_list **stack_b);
+void check_bonus(t_list *stack_a, t_list *stack_b);
+int check_and_execute(char *input, t_list **stack_a, t_list **stack_b);
+
+//main
+int	stack_already_sorted(t_list *stack_a);
+
+//get_next_line
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
+char	*ft_strchr(char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_strdup(char *str);
+char	*get_next_line(int fd);
 
 #endif

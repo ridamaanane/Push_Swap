@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rmaanane <rmaanane@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/09 03:01:33 by rmaanane          #+#    #+#             */
+/*   Updated: 2025/03/16 13:51:16 by rmaanane         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	main(int ac, char **av)
@@ -5,8 +17,11 @@ int	main(int ac, char **av)
 	int i;
 	int *arr;
 
-	list_t *stack_a;
-	list_t *stack_b;
+	t_list *stack_a;
+	t_list *stack_b;
+
+	if (ac < 2)
+		return (0);
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -28,10 +43,10 @@ int	main(int ac, char **av)
 	if (stack_already_sorted(stack_a))
 	{
 		free_stack(stack_a);
-		return (1);
+		free(arr);
+		return (0);
 	}
 	sort_stack_by_size(&stack_a, &stack_b, arr);
 	//print_list(stack_a);
 	free_stack(stack_a);
 }
-
